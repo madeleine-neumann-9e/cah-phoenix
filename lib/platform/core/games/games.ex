@@ -8,13 +8,14 @@ defmodule Platform.Games do
       id: :rand.uniform(10000),
       password: "secret",
       current_round: CurrentRound.new(),
+      players: [],
       used_black_cards: [],
       used_white_cards: []
     }
   end
 
   def add_player(%Game{} = game, name) do
-    %{game | players: [Player.new(name) | game.players]}
+    %{game | players: game.players ++ [Player.new(name)]}
   end
 
   def current_player(_conn, %Game{} = game) do
