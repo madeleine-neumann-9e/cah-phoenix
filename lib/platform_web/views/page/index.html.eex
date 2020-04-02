@@ -1,7 +1,7 @@
 <article class="content">
   <h1 class="headline headline--white">Hallo I bims</h1>
 
-  <p style="color: white">
+  <p class="paragraph paragraph--white">
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam non ex doloribus fugiat asperiores, incidunt architecto. Officia nisi enim aut ut, ullam, mollitia modi molestias dolores quia ratione saepe nulla!
   </p>
   <pre>

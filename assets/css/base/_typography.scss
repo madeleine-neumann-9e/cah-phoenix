@@ -14,3 +14,14 @@
   }
 }
 
+.paragraph {
+  margin-bottom: $s-unit;
+
+  &--white {
+    color: $white;
+  }
+
+  &--black {
+    color: $black;
+  }
+}
