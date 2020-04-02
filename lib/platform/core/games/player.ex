@@ -6,8 +6,7 @@ defmodule Platform.Games.Player do
       id: :rand.uniform(10000),
       name: name,
       all_white_cards: [],
-      points: 0,
-      reader: false
+      points: 0
     }
   end
 end

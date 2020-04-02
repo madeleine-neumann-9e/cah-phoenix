@@ -1,5 +1,5 @@
 defmodule Platform.Games.CurrentRound do
-  defstruct [:black_card, :reader_user_id, :current_players]
+  defstruct [:black_card, :reader_player_id, :current_players]
 
   def new do
     %__MODULE__{
