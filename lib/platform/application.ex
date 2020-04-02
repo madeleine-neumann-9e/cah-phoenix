@@ -11,8 +11,10 @@ defmodule Platform.Application do
       # Start the Ecto repository
       Platform.Repo,
       # Start the endpoint when the application starts
-      PlatformWeb.Endpoint
+      PlatformWeb.Endpoint,
       # Starts a worker by calling: Platform.Worker.start_link(arg)
+      {Registry, keys: :unique, name: Platform.GameRegistry},
+      {DynamicSupervisor, strategy: :one_for_one, name: Platform.GameSupervisor}
       # {Platform.Worker, arg},
     ]
 
