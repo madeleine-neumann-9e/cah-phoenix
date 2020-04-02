@@ -1,8 +1,6 @@
 
 <%= render "_navigation.html", assigns %>
-
 <%= inspect Platform.Games.current_player(@socket, @game) %>
-  <h1 class="headline headline--white">Welcome to the more pretty page of cards against humanity</h1>
   <div class="black-cards">
     <div class="black-cards__container">
       <div class="black-cards__card">
@@ -10,40 +8,7 @@
         <p class="paragraph paragraph--center">Cards to lay down: 1</p>
       </div>
     </div>
-    <div class="white-cards">
-      <div class="white-cards__container">
-        <div class="white-cards__card">
-          <p class="paragraph paragraph--center">Tiny Orphans</p>
-        </div>
-        <div class="white-cards__card">
-          <p class="paragraph paragraph--center">Tiny Orphans</p>
-        </div>
-        <div class="white-cards__card">
-          <p class="paragraph paragraph--center">Tiny Orphans</p>
-        </div>
-        <div class="white-cards__card">
-          <p class="paragraph paragraph--center">Tiny Orphans</p>
-        </div>
-        <div class="white-cards__card">
-          <p class="paragraph paragraph--center">Tiny Orphans</p>
-        </div>
-        <div class="white-cards__card">
-          <p class="paragraph paragraph--center">Tiny Orphans</p>
-        </div>
-        <div class="white-cards__card">
-          <p class="paragraph paragraph--center">Tiny Orphans</p>
-        </div>
-        <div class="white-cards__card">
-          <p class="paragraph paragraph--center">Tiny Orphans</p>
-        </div>
-        <div class="white-cards__card">
-          <p class="paragraph paragraph--center">Tiny Orphans</p>
-        </div>
-        <div class="white-cards__card">
-          <p class="paragraph paragraph--center">Tiny Orphans</p>
-        </div>
-      </div>
-    </div>
+    <%= render "_white_cards.html", assigns %>
   </div>
 
 <pre class="paragraph paragraph--white" style="margin-top: 20px;">
