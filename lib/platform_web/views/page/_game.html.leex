@@ -1,7 +1,7 @@
-<button phx-click="add_player">Add player</button>
+
+<%= render "_navigation.html", assigns %>
 
 <%= inspect Platform.Games.current_player(@socket, @game) %>
-<hr>
   <h1 class="headline headline--white">Welcome to the more pretty page of cards against humanity</h1>
   <div class="black-cards">
     <div class="black-cards__container">
