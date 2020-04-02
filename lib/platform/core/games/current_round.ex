@@ -1,4 +1,4 @@
-defmodule Platform.Game.CurrentRound do
+defmodule Platform.Games.CurrentRound do
   defstruct [:black_card, :reader_user_id, :current_players]
 
   def new do

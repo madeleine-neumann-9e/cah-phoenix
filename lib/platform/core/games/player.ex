@@ -1,11 +1,11 @@
-defmodule Platform.Game.Player do
+defmodule Platform.Games.Player do
   defstruct [:id, :name, :all_white_cards, :points, :reader]
 
-  def new do
+  def new(name) do
     %__MODULE__{
-      id: 1,
-      name: "Sascha",
-      all_white_cards: [1,2,5,4],
+      id: :rand.uniform(10000),
+      name: name,
+      all_white_cards: [],
       points: 0,
       reader: false
     }

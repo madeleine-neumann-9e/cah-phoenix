@@ -1,11 +1,14 @@
 defmodule PlatformWeb.PageController do
   use PlatformWeb, :controller
 
-  alias Platform.Game.Room
+  alias Platform.Games
 
   def index(conn, _params) do
-    room = Room.new()
+    game =
+      Games.new()
+      |> Games.add_player("Sascha")
+      |> Games.add_player("Madeleine")
 
-    render(conn, "index.html", room: room)
+    render(conn, "index.html", room: game)
   end
 end
