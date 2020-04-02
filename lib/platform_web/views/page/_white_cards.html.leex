@@ -2,6 +2,7 @@
   <div class="white-cards__container">
     <%= for white_card <- Platform.Games.current_player(@socket, @game).all_white_cards do %>
         <div class="white-cards__card">
+          <div class="white-cards__picked-bubble">1</div>
           <p class="paragraph paragraph--center"><%= raw white_card.answer %></p>
         </div>
     <% end %>
