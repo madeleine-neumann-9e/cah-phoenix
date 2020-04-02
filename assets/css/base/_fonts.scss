@@ -1,96 +1,54 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600;700;800;900&display=swap');
 
+
+$min_width: 320px;
+$max_width: 1200px;
+$min_font: 16px;
+$max_font: 24px;
+
 html {
+  @include fluid-type($min_width, $max_width, $min_font, $max_font);
   font-family: 'Raleway', sans-serif;
 }
 
-$baseline: 1.5rem;
-$minScreen: 20rem;
-$maxScreen: 50rem;
-$minFont: .8rem;
-$maxFont: 2rem;
-
-$h1: 2rem;
-$h2: 1.5rem;
-$h3: 1.25rem;
-$h4: 1rem;
-$h5: .875rem;
-
-
-@mixin fluid-type($properties, $min-vw, $max-vw, $min-value, $max-value) {
-	& {
-		@each $property in $properties {
-			#{$property}: $min-value;
-		}
-
-		@media screen and (min-width: $min-vw) {
-			@each $property in $properties {
-				#{$property}: calc(#{$min-value} + #{strip-unit($max-value - $min-value)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
-			}
-		}
-
-		@media screen and (min-width: $max-vw) {
-			@each $property in $properties {
-				#{$property}: $max-value;
-			}
-		}
-	}
-}
-
 @function strip-unit($value) {
-	@return $value / ($value * 0 + 1);
+  @return $value / ($value * 0 + 1);
 }
 
-html {
-	box-sizing: border-box;
-	height: 100%;
-	font-smoothing: antialiased;
-	text-rendering: optimizeLegibility;
-	@include fluid-type(font-size, $minScreen, $maxScreen, $minFont, $maxFont);
+@mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
+  $u1: unit($min-vw);
+  $u2: unit($max-vw);
+  $u3: unit($min-font-size);
+  $u4: unit($max-font-size);
+
+  @if $u1 == $u2 and $u1 == $u3 and $u1 == $u4 {
+    & {
+      font-size: $min-font-size;
+      @media screen and (min-width: $min-vw) {
+        font-size: calc(#{$min-font-size} + #{strip-unit($max-font-size - $min-font-size)} * ((100vw - #{$min-vw}) / #{strip-unit($max-vw - $min-vw)}));
+      }
+      @media screen and (min-width: $max-vw) {
+        font-size: $max-font-size;
+      }
+    }
+  }
 }
 
-body {
-	line-height: $baseline;
-	padding: $baseline 0;
-	margin: 0 auto;
-	width: 22rem;
-}
-
-p {
-	line-height: $baseline;
-	margin-bottom: $baseline;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-	font-weight: 700;
-	margin-bottom: $baseline;
-}
+$mod_1: 1.2; // mobile
+$mod_2: 1.5; // desktop
 
 h1 {
-	font-size: $h1;
-	line-height: $h1/2;
+  font-size: $mod_1*$mod_1*$mod_1*$mod_1 *1rem;
+  @include fluid-type($min_width, $max_width, $mod_1*$mod_1*$mod_1 *$min_font, $mod_2*$mod_2*$mod_2 *$min_font);
 }
 
 h2 {
-	font-size: $h2;
-	line-height: $h2/2;
+  font-size: $mod_1*$mod_1*$mod_1 *1rem;
+  @include fluid-type($min_width, $max_width, $mod_1*$mod_1*$mod_1 *$min_font, $mod_2*$mod_2*$mod_2 *$min_font);
 }
 
 h3 {
-	font-size: $h3;
-	line-height: $h3/2;
+  font-size: $mod_1*$mod_1 *1rem;
+  @include fluid-type($min_width, $max_width, $mod_1*$mod_1 *$min_font, $mod_2*$mod_2 *$min_font);
 }
 
-h4 {
-	font-size: $h4;
-	line-height: $h4/2;
-}
-
-h5 {
-	font-size: $h5;
-	line-height: $h5/2;
-}

@@ -1,0 +1,15 @@
+.headline {
+  color: white;
+
+  &--white {
+    color: $white;
+  }
+
+  &--black {
+    color: $black;
+  }
+
+  &--underlined {
+    text-decoration: underline;
+  }
+}

@@ -1,14 +1,7 @@
-<h1>Hallo I bims</h1>
-<h2>Hallo I bims 2</h2>
-<h3>Hallo I bims 2</h3>
-<h4>Hallo I bims 2</h4>
-<h5>Hallo I bims 2</h5>
-
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sequi quod voluptate inventore, mollitia voluptatibus dolore sed velit id enim voluptatum quaerat iure unde in nam beatae error. Animi, nostrum. </p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sequi quod voluptate inventore, mollitia voluptatibus dolore sed velit id enim voluptatum quaerat iure unde in nam beatae error. Animi, nostrum. </p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sequi quod voluptate inventore, mollitia voluptatibus dolore sed velit id enim voluptatum quaerat iure unde in nam beatae error. Animi, nostrum. </p>
+<h1 class="headline headline--white">Hallo I bims</h1>
 
 
+<div class="container"></div>
 <pre>
   <%= inspect(@room, pretty: true, limit: 9999) %>
 </pre>
