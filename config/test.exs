@@ -4,7 +4,7 @@ use Mix.Config
 config :platform, Platform.Repo,
   username: "postgres",
   password: "postgres",
-  database: "platform_test",
+  database: "cah_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
