@@ -11,7 +11,7 @@ defmodule Platform.GameLive do
 
     current_user = Games.current_player(socket, game)
 
-    {:ok, assign(assign(socket, :game, game), :current_user, current_user)}
+    {:ok, assign(socket, %{game: game, current_user: current_user})}
   end
 
 
