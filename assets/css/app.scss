@@ -1,3 +1,4 @@
+// All basic stuff
 @import "base/reset";
 @import "base/variables";
 @import "base/fonts";
@@ -6,3 +7,6 @@
 @import "base/typography";
 
 @import "../../deps/phoenix_live_view/assets/css/live_view.css";
+// Cards related
+@import "cards/white-cards";
+@import "cards/black-cards";

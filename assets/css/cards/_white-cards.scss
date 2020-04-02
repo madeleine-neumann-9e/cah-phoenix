@@ -1,0 +1,41 @@
+.white-cards {
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+
+    @include breakpoint('s') {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @include breakpoint('m') {
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+
+    @include breakpoint('l') {
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    }
+
+  }
+
+  &__card {
+    display: block;
+    position: relative;
+    margin: 0 auto $s-unit auto;
+    padding: $s-unit;
+    min-height: 20vh;
+    color: $black;
+    background-color: $white;
+    border: 1px solid $white;
+    border-radius: 5px;
+    top: 0;
+    transition: top 0.5s ease-in-out;
+    width: 100%;
+
+    &:hover {
+      top: -10px;
+    }
+  }
+
+}

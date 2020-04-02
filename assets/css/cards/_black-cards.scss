@@ -1,0 +1,28 @@
+.black-cards {
+  position: relative;
+
+  &__container {
+    max-width: 320px;
+    padding: $s-unit;
+    display: block;
+    margin: 0 auto;
+  }
+
+  &__card {
+    display: block;
+    position: relative;
+    margin: 0 auto $s-unit auto;
+    padding: $s-unit;
+    max-width: 50vw;
+    min-height: 20vh;
+    color: $white;
+    border: 1px solid $white;
+    border-radius: 5px;
+    top: 0;
+    transition: top 0.5s ease-in-out;
+
+    &:hover {
+      top: -10px;
+    }
+  }
+}

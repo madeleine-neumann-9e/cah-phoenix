@@ -12,6 +12,10 @@
   &--underlined {
     text-decoration: underline;
   }
+
+  &--center {
+    text-align: center;
+  }
 }
 
 .paragraph {
@@ -23,5 +27,9 @@
 
   &--black {
     color: $black;
+  }
+
+  &--center {
+    text-align: center;
   }
 }

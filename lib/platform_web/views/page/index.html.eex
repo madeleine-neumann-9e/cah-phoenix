@@ -1,12 +1,52 @@
 <article class="content">
-  <h1 class="headline headline--white">Hallo I bims</h1>
+  <h1 class="headline headline--white">Welcome to the more pretty page of cards against humanity</h1>
+  <div class="black-cards">
+    <div class="black-cards__container">
+      <div class="black-cards__card">
+        <h3 class="headline headline--white headline--center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum pariatur, repudiandae dignissimos accusantium odio deserunt animi corporis rem in maxime aut velit ea ab quis dolorem blanditiis quae nulla culpa.</h3>
+        <p class="paragraph paragraph--center">Cards to lay down: 1</p>
+      </div>
+    </div>
+    <div class="white-cards">
+    <div class="white-cards__container">
+      <div class="white-cards__card">
+        <p class="paragraph paragraph--center">Tiny Orphans</p>
+      </div>
+      <div class="white-cards__card">
+        <p class="paragraph paragraph--center">Tiny Orphans</p>
+      </div>
+      <div class="white-cards__card">
+        <p class="paragraph paragraph--center">Tiny Orphans</p>
+      </div>
+      <div class="white-cards__card">
+        <p class="paragraph paragraph--center">Tiny Orphans</p>
+      </div>
+      <div class="white-cards__card">
+        <p class="paragraph paragraph--center">Tiny Orphans</p>
+      </div>
+      <div class="white-cards__card">
+        <p class="paragraph paragraph--center">Tiny Orphans</p>
+      </div>
+      <div class="white-cards__card">
+        <p class="paragraph paragraph--center">Tiny Orphans</p>
+      </div>
+      <div class="white-cards__card">
+        <p class="paragraph paragraph--center">Tiny Orphans</p>
+      </div>
+      <div class="white-cards__card">
+        <p class="paragraph paragraph--center">Tiny Orphans</p>
+      </div>
+      <div class="white-cards__card">
+        <p class="paragraph paragraph--center">Tiny Orphans</p>
+      </div>
+    </div>
+  </div>
 
-  <p class="paragraph paragraph--white">
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam non ex doloribus fugiat asperiores, incidunt architecto. Officia nisi enim aut ut, ullam, mollitia modi molestias dolores quia ratione saepe nulla!
-  </p>
-  <pre>
+  <!--
+  <pre class="paragraph paragraph--white">
     <%= inspect(@room, pretty: true, limit: 9999) %>
   </pre>
+  -->
 </article>
 
 
