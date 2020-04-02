@@ -1,15 +1,9 @@
 
 <%= render "_navigation.html", assigns %>
 <%= inspect Platform.Games.current_player(@socket, @game) %>
-  <div class="black-cards">
-    <div class="black-cards__container">
-      <div class="black-cards__card">
-        <h3 class="headline headline--white headline--center">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum pariatur, repudiandae dignissimos accusantium odio deserunt animi corporis rem in maxime aut velit ea ab quis dolorem blanditiis quae nulla culpa.</h3>
-        <p class="paragraph paragraph--center">Cards to lay down: 1</p>
-      </div>
-    </div>
-    <%= render "_white_cards.html", assigns %>
-  </div>
+
+<%= render "_black_card.html", assigns %>
+<%= render "_white_cards.html", assigns %>
 
 <pre class="paragraph paragraph--white" style="margin-top: 20px;">
 <%= inspect(@game, pretty: true, limit: 9999) %>
