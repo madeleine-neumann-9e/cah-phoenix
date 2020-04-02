@@ -7,3 +7,8 @@
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sequi quod voluptate inventore, mollitia voluptatibus dolore sed velit id enim voluptatum quaerat iure unde in nam beatae error. Animi, nostrum. </p>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sequi quod voluptate inventore, mollitia voluptatibus dolore sed velit id enim voluptatum quaerat iure unde in nam beatae error. Animi, nostrum. </p>
 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum sequi quod voluptate inventore, mollitia voluptatibus dolore sed velit id enim voluptatum quaerat iure unde in nam beatae error. Animi, nostrum. </p>
+
+
+<pre>
+  <%= inspect(@room, pretty: true, limit: 9999) %>
+</pre>
