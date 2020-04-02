@@ -1,5 +1,5 @@
 defmodule Platform.Games.Player do
-  defstruct [:id, :name, :all_white_cards, :points, :reader]
+  defstruct [:id, :name, :all_white_cards, :points, :reader, :selected_white_cards]
   alias Platform.Cards
 
   def new(name) do
@@ -11,7 +11,8 @@ defmodule Platform.Games.Player do
       id: :rand.uniform(10000),
       name: name,
       all_white_cards: white_cards,
-      points: 0
+      points: 0,
+      selected_white_cards: []
     }
   end
 end
