@@ -16,4 +16,8 @@ defmodule Platform.Games do
   def add_player(game, name) do
     %{game | players: [Player.new(name) | game.players]}
   end
+
+  def current_player(_conn, game) do
+    game |> Map.get(:players) |> List.first
+  end
 end
