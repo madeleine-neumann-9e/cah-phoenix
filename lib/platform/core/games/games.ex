@@ -2,13 +2,19 @@ defmodule Platform.Games do
   alias Platform.Games.CurrentRound
   alias Platform.Games.Game
   alias Platform.Games.Player
+  alias Platform.Cards
 
   def new do
+    [black_card] =
+      Cards.list_black_cards()
+      |> Enum.take_random(1)
+
     %Game{
       id: :rand.uniform(10000),
       password: "secret",
       current_round: CurrentRound.new(),
       players: [],
+      black_card: black_card,
       used_black_cards: [],
       used_white_cards: []
     }
