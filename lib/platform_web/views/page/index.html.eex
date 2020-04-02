@@ -1,5 +1,4 @@
-<article class="content">
-  <%= live_render(@conn, Platform.GameLive) %>
-</article>
+<%= live_render(@conn, Platform.GameLive) %>
+
 
 

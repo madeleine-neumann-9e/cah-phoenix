@@ -1,0 +1,11 @@
+<aside class="players">
+  <div class="players__box">
+    <%= for player <- @game.players do %>
+      <%= if Platform.Games.current_player(@socket, @game).id == player.id do %>
+        <div class="paragraph paragraph--white players--current-reader"><%= player.name %></div>
+      <% else %>>
+        <div class="paragraph paragraph--white"><%= player.name %></div>
+      <% end %>
+    <% end  %>>
+  </div>
+</aside>
