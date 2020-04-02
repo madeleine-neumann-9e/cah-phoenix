@@ -1,8 +1,14 @@
 <div class="white-cards">
   <div class="white-cards__container">
     <%= for white_card <- Platform.Games.current_player(@socket, @game).all_white_cards do %>
-        <div class="white-cards__card">
-          <div class="white-cards__picked-bubble">1</div>
+        <div class="white-cards__card" phx-click="select_card" phx-value-card-id="<%= white_card.id %>">
+
+
+          <%= if Platform.Games.get_white_card_index(Platform.Games.current_player(@socket, @game), white_card) do %>
+            <div class="white-cards__picked-bubble">
+              <%= Platform.Games.get_white_card_index(Platform.Games.current_player(@socket, @game), white_card) %>
+            </div>
+          <% end %>
           <p class="paragraph paragraph--center"><%= raw white_card.answer %></p>
         </div>
     <% end %>

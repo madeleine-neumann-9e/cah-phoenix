@@ -22,10 +22,27 @@ defmodule Platform.Games do
     game |> Map.get(:players) |> List.first
   end
 
-  def select_white_card(%Game{players: players} = game, %Player{all_white_cards: all_white_cards} = player, white_card_id) do
-    white_card = Enum.find(all_white_cards, fn card -> card.id == white_card_id end)
-    IO.inspect %{player | selected_white_cards: player.selected_white_cards ++ [white_card]}
+  def select_white_card(%Game{players: players} = game, %Player{} = current_player, white_card_id) do
+    white_card = Enum.find(current_player.all_white_cards, fn card -> card.id == white_card_id end)
 
-    game
+    new_players = Enum.map(players, fn player ->
+      if player.id == current_player.id do
+        %{player | selected_white_cards: current_player.selected_white_cards ++ [white_card]}
+      else
+        player
+      end
+    end)
+
+    %{game | players: new_players}
+  end
+
+
+  def get_white_card_index(%Player{} = player, white_card) do
+    index = Enum.find_index(player.selected_white_cards, fn card -> card == white_card end)
+    if index do
+      index + 1
+    else
+      nil
+    end
   end
 end
