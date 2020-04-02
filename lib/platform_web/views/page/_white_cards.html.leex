@@ -1,34 +1,9 @@
 <div class="white-cards">
   <div class="white-cards__container">
-    <div class="white-cards__card">
-      <p class="paragraph paragraph--center">Tiny Orphans</p>
-    </div>
-    <div class="white-cards__card">
-      <p class="paragraph paragraph--center">Tiny Orphans</p>
-    </div>
-    <div class="white-cards__card">
-      <p class="paragraph paragraph--center">Tiny Orphans</p>
-    </div>
-    <div class="white-cards__card">
-      <p class="paragraph paragraph--center">Tiny Orphans</p>
-    </div>
-    <div class="white-cards__card">
-      <p class="paragraph paragraph--center">Tiny Orphans</p>
-    </div>
-    <div class="white-cards__card">
-      <p class="paragraph paragraph--center">Tiny Orphans</p>
-    </div>
-    <div class="white-cards__card">
-      <p class="paragraph paragraph--center">Tiny Orphans</p>
-    </div>
-    <div class="white-cards__card">
-      <p class="paragraph paragraph--center">Tiny Orphans</p>
-    </div>
-    <div class="white-cards__card">
-      <p class="paragraph paragraph--center">Tiny Orphans</p>
-    </div>
-    <div class="white-cards__card">
-      <p class="paragraph paragraph--center">Tiny Orphans</p>
-    </div>
+    <%= for white_card <- Platform.Games.current_player(@socket, @game).all_white_cards do %>
+        <div class="white-cards__card">
+          <p class="paragraph paragraph--center"><%= raw white_card.answer %></p>
+        </div>
+    <% end %>
   </div>
 </div>
