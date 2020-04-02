@@ -30,7 +30,7 @@ defmodule PlatformWeb do
   def view do
     quote do
       use Phoenix.View,
-        root: "lib/platform_web/templates",
+        root: "lib/platform_web/views",
         namespace: PlatformWeb
 
       # Import convenience functions from controllers

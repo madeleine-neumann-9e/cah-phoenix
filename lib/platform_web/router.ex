@@ -9,18 +9,10 @@ defmodule PlatformWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
-  end
-
   scope "/", PlatformWeb do
     pipe_through :browser
 
     get "/", PageController, :index
+    resources "/games", GameController
   end
-
-  # Other scopes may use custom stacks.
-  # scope "/api", PlatformWeb do
-  #   pipe_through :api
-  # end
 end
