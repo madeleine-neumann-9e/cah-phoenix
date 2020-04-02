@@ -1,5 +1,10 @@
-.container {
+.page {
   width: 100vw;
   height: 100vh;
   background-color: $black;
+}
+
+.content {
+  max-width: 50em;
+  margin: 0 auto;
 }

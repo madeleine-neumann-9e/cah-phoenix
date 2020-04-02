@@ -1,19 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600;700;800;900&display=swap');
 
-
 $min_width: 320px;
 $max_width: 1200px;
 $min_font: 16px;
 $max_font: 24px;
-
-html {
-  @include fluid-type($min_width, $max_width, $min_font, $max_font);
-  font-family: 'Raleway', sans-serif;
-}
-
-@function strip-unit($value) {
-  @return $value / ($value * 0 + 1);
-}
 
 @mixin fluid-type($min-vw, $max-vw, $min-font-size, $max-font-size) {
   $u1: unit($min-vw);
@@ -34,6 +24,15 @@ html {
   }
 }
 
+html {
+  // @include fluid-type($min_width, $max_width, $min_font, $max_font);
+  font-family: 'Raleway', sans-serif;
+}
+
+@function strip-unit($value) {
+  @return $value / ($value * 0 + 1);
+}
+
 $mod_1: 1.2; // mobile
 $mod_2: 1.5; // desktop
 
@@ -50,5 +49,10 @@ h2 {
 h3 {
   font-size: $mod_1*$mod_1 *1rem;
   @include fluid-type($min_width, $max_width, $mod_1*$mod_1 *$min_font, $mod_2*$mod_2 *$min_font);
+}
+
+
+p {
+  font-size: 1rem;
 }
 
