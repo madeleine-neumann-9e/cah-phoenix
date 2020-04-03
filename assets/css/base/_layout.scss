@@ -28,6 +28,7 @@ $breakpoints: (
 
 .page {
   width: 100vw;
+  min-height: 100vh;
   height: 100%;
   background-color: $dark-grey;
 }
