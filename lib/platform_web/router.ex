@@ -13,5 +13,6 @@ defmodule PlatformWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+    get "/game", GameController, :index
   end
 end

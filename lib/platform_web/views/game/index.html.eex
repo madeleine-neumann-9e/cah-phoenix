@@ -1,0 +1,4 @@
+<%= live_render(@conn, Platform.GameLive) %>
+
+
+

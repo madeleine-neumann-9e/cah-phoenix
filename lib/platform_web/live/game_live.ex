@@ -2,7 +2,7 @@ defmodule Platform.GameLive do
   use Phoenix.LiveView
   alias Platform.Games
 
-  def render(assigns), do: PlatformWeb.PageView.render("_game.html", assigns)
+  def render(assigns), do: PlatformWeb.GameView.render("_game.html", assigns)
 
   def mount(_params, %{}, socket) do
     players_visible = false

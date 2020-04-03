@@ -1,4 +1,4 @@
-defmodule PlatformWeb.PageView do
+defmodule PlatformWeb.GameView do
   use PlatformWeb, :view
 
   alias Platform.Games
