@@ -51,4 +51,8 @@ defmodule Platform.Games do
       nil
     end
   end
+
+  def show_reset_button?(%Game{} = _game, %Player{selected_white_cards: selected_white_cards}) do
+    length(selected_white_cards) > 0
+  end
 end
