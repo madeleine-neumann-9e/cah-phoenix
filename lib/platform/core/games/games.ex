@@ -39,7 +39,11 @@ defmodule Platform.Games do
       end
     end)
 
-    %{game | players: new_players}
+    if length(current_player.selected_white_cards) < game.black_card.picks do
+      %{game | players: new_players}
+    else
+      game
+    end
   end
 
 
