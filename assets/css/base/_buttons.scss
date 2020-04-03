@@ -1,7 +1,7 @@
 .button {
   position: relative;
   padding: $s-unit/2 $s-unit;
-  background: white;
+  background: $white;
   color: $black;
   border: none;
   outline: none;
@@ -10,4 +10,14 @@
   &:hover {
     cursor: pointer;
   }
+
+  &--cancel {
+    background-color: red;
+
+  }
+
+  &--confirm {
+    background-color: green;
+  }
+
 }
