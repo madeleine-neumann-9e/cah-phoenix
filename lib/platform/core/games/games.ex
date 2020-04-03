@@ -47,14 +47,22 @@ defmodule Platform.Games do
     end
   end
 
-  def show_reset_button?(%Game{} = _game, %Player{selected_white_cards: selected_white_cards}) do
-    length(selected_white_cards) > 0
+  def show_reset_button?(%Game{} = _game, %Player{} = player) do
+    length(player.selected_white_cards) > 0 && !player.confirmed
   end
 
   def show_confirm_button?(%Game{black_card: black_card}, %Player{selected_white_cards: selected_white_cards}) do
     length(selected_white_cards) == black_card.picks
   end
 
+  def player_reset_white_cards(%Game{} = game, %Player{} = player) do
+    if show_reset_button?(game, player) do
+      new_player = %{player | selected_white_cards: []}
+      find_and_update_player(game, new_player)
+    else
+      game
+    end
+  end
 
   # Private functions
   defp find_and_update_player(%Game{} = game, %Player{} = updated_player) do
