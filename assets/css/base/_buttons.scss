@@ -13,11 +13,13 @@
 
   &--cancel {
     background-color: red;
+    color: $white;
 
   }
 
   &--confirm {
     background-color: green;
+    color: $white;
   }
 
 }
