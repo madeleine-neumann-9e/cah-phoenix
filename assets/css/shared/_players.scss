@@ -36,6 +36,7 @@
     padding: $s-unit;
     background-color: $white;
     color: $black;
+    border-right: 1px dotted $black;
 
     &:hover {
       cursor: pointer;
@@ -50,7 +51,5 @@
     list-style-type: circle;
     margin-bottom: $s-unit;
   }
-
-
 }
 
