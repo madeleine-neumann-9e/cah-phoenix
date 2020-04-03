@@ -1,0 +1,20 @@
+<section class="header">
+  <div class="content header__container">
+    <article>
+      <h1 class="headline">
+        Cards against Quarantine!
+      </h1>
+      <p class="paragraph paragraph--white">A party game for bored out and horrible people </p>
+    </article>
+    <article class="header__card-container">
+      <img src="<%= Routes.static_path(@conn, "/images/batman.png") %>">
+
+      <div class="header__white-cards">
+        <img src="<%= Routes.static_path(@conn, "/images/orphans.png") %>" class="header__image">
+        <img src="<%= Routes.static_path(@conn, "/images/balls.png") %>" class="header__image-tilt-right">
+      </div>
+    </article>
+  </div>
+
+
+</section>

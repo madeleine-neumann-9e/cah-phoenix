@@ -39,4 +39,32 @@ $breakpoints: (
   max-width: 80em;
 }
 
+.header {
+  padding: $l-unit;
+  background-color: $antrazit;
+  min-height: 30vh;
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include breakpoint('s') {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  &__card-container {
+    display: flex;
+  }
+
+  &__white-cards {
+    position: relative;
+    display: flex;
+  }
+
+  &__image {
+    margin: 0;
+  }
+}
+
 
