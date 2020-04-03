@@ -2,7 +2,10 @@
 	box-sizing: border-box;
 }
 
-
+div {
+	margin: 0;
+	padding: 0;
+}
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -59,19 +62,11 @@ textarea {
   margin: 0; /* 2 */
 }
 
-button,
-input { /* 1 */
-  overflow: visible;
-}
-
-button,
-select { /* 1 */
-  text-transform: none;
-}
-
-button,
-[type="button"],
-[type="reset"],
-[type="submit"] {
-  -webkit-appearance: button;
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background: none;
 }

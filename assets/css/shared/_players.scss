@@ -1,12 +1,56 @@
 .players {
+  position: fixed;
+  top: 0;
+  right: -200px;
   padding-right: $s-unit;
+  background-color: $white;
+  min-height: 100vh;
+  min-width: 200px;
+  transition: all .5s linear;
+
+  &--active {
+    right: 0;
+  }
 
   &__box {
-    text-align: right;
+    padding: $s-unit;
+    top: 0;
+    color: $black;
   }
 
   &--current-reader {
     font-weight: 800;
     color: red;
   }
+
+  &--cards-confirmed {
+    font-weight: 800;
+    color: green;
+  }
+
+  &__flag {
+    position: absolute;
+    top: 0;
+    left: -120px;
+    width: 120px;
+    padding: $s-unit;
+    background-color: $white;
+    color: $black;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__list {
+    padding: $s-unit;
+  }
+
+  &__list-item {
+    list-style-type: circle;
+    margin-bottom: $s-unit;
+  }
+
+
 }
+

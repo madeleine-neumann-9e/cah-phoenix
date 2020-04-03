@@ -4,11 +4,10 @@
   background: white;
   color: $black;
   border: none;
+  outline: none;
   top: 0;
-  transition: background 0.5s ease-in-out;
 
   &:hover {
-    background: linear-gradient(90deg, rgba(62,62,62,1) 0%, rgba(227,227,255,1) 35%, rgba(200,209,210,1) 100%);
     cursor: pointer;
   }
 }

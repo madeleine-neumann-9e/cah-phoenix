@@ -1,25 +1,14 @@
 
 <%= render "_navigation.html", assigns %>
-<div class="content-with-aside-wrapper">
-  <div class="content">
-    <%= render "_black_card.html", assigns %>
-    <%= render "_white_cards.html", assigns %>
-  </div>
-  <%= render "_players.html", assigns %>
-</div>
 
+<div class="content">
+  <%= render "_black_card.html", assigns %>
+  <%= render "_white_cards.html", assigns %>
+</div>
+<%= render "_players.html", assigns %>
 
 
 
 <pre class="paragraph paragraph--white" style="margin-top: 20px;">
-  <span phx-click="toggle_players_visible">toogle sidebar</span>
-
-  <%= if @players_visible do %>
-    Show sidebar
-  <% else %>
-    Hide sidebar
-  <% end %>
-
-
-<%= inspect(@game, pretty: true, limit: 9999) %>
+  <%= inspect(@game, pretty: true, limit: 9999) %>
 </pre>

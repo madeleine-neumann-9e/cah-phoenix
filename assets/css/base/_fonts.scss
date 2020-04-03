@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;300;400;500;600;700;800;900&display=swap');
 
+html {
+  font-family: 'Raleway', sans-serif;
+}
+
 $min_width: 320px;
 $max_width: 1200px;
 $min_font: 16px;
@@ -24,10 +28,7 @@ $max_font: 24px;
   }
 }
 
-html {
-  // @include fluid-type($min_width, $max_width, $min_font, $max_font);
-  font-family: 'Raleway', sans-serif;
-}
+
 
 @function strip-unit($value) {
   @return $value / ($value * 0 + 1);
