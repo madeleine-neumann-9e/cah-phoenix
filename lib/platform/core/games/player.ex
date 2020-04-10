@@ -1,6 +1,16 @@
 defmodule Platform.Games.Player do
-  defstruct [:id, :name, :all_white_cards, :points, :reader, :selected_white_cards, :confirmed]
+  use Ecto.Schema
+
   alias Platform.Cards
+
+  schema "players" do
+    field :name, :string
+    field :all_white_cards, :string
+    field :points, :string
+    field :reader, :string
+    field :selected_white_cards, :string
+    field :confirmed, :boolean
+  end
 
   def new(name) do
     white_cards =

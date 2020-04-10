@@ -1,3 +1,13 @@
 defmodule Platform.Games.Game do
-  defstruct [:id, :password, :black_card, :current_round, :players, :used_black_cards, :used_white_cards]
+  use Ecto.Schema
+  import Ecto.Changeset
+
+  schema "games" do
+    field :password, :string
+    field :black_card, :string
+    field :current_round, :string
+    field :players, :string
+    field :used_black_cards, :string
+    field :used_white_cards, :string
+  end
 end
