@@ -25,13 +25,8 @@ defmodule Platform.Games do
   end
 
   def select_white_card(%Game{} = game, %Player{} = current_player, white_card_id) do
-    if length(current_player.selected_white_cards) < game.black_card.picks do
-      white_card = Enum.find(current_player.all_white_cards, fn card -> card.id == white_card_id end)
-      new_player = %{current_player | selected_white_cards: current_player.selected_white_cards ++ [white_card]}
-      find_and_update_player(game, new_player)
-    else
-      game
-    end
+    new_player = Players.select_white_card(current_player, white_card_id, game.black_card.picks)
+    find_and_update_player(game, new_player)
   end
 
   def get_white_card_index(%Player{} = player, white_card) do
