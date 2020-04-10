@@ -1,7 +1,7 @@
 defmodule Platform.Games.Player do
   use Ecto.Schema
 
-  alias Platform.Cards
+  alias Platform.WhiteCards
 
   @primary_key {:id, :binary_id, autogenerate: true}
   schema "players" do
@@ -15,7 +15,7 @@ defmodule Platform.Games.Player do
 
   def new(name) do
     white_cards =
-      Cards.list_white_cards()
+      WhiteCards.list()
       |> Enum.take_random(10)
 
     %__MODULE__{
