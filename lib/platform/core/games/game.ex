@@ -5,7 +5,6 @@ defmodule Platform.Games.Game do
   schema "games" do
     field :password, :string
     field :black_card, :string
-    field :current_round, :string
     field :players, :string
     field :used_black_cards, :string
     field :used_white_cards, :string

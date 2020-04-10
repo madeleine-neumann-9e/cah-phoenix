@@ -12,7 +12,6 @@ defmodule Platform.Games do
     %Game{
       id: :rand.uniform(10000),
       password: "secret",
-      current_round: CurrentRound.new(),
       players: [],
       black_card: black_card,
       used_black_cards: [],
