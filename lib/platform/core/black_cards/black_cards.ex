@@ -4,11 +4,17 @@ defmodule Platform.BlackCards do
   def list do
     read_json_file()
     |> Enum.with_index(1)
-    |> Enum.map(fn {card, index} -> %BlackCard{
+    |> Enum.map(fn {card, index} -> create(%{
       id: index,
       question: card["text"],
       picks: card["pick"]
-    } end)
+    }) end)
+  end
+
+  def create(attrs \\ %{}) do
+    %BlackCard{}
+    |> BlackCard.changeset(attrs, :create)
+    |> Ecto.Changeset.apply_action!(:insert)
   end
 
   # Private functions
