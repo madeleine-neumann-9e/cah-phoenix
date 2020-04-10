@@ -10,6 +10,11 @@ defmodule Platform.WhiteCards do
     }) end)
   end
 
+  def random(count) do
+    list()
+    |> Enum.take_random(count)
+  end
+
   def create(attrs \\ %{}) do
     %WhiteCard{}
     |> WhiteCard.changeset(attrs, :create)
