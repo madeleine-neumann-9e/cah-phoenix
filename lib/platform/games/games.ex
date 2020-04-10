@@ -10,11 +10,8 @@ defmodule Platform.Games do
 
     %Game{
       id: :rand.uniform(10000),
-      password: "secret",
       players: [],
-      black_card: black_card,
-      used_black_cards: [],
-      used_white_cards: []
+      black_card: black_card
     }
   end
 
