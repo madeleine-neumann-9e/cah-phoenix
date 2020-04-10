@@ -1,5 +1,5 @@
 defmodule Platform.WhiteCards do
-  alias Platform.Cards.WhiteCard
+  alias Platform.WhiteCards.WhiteCard
 
   def list do
     read_json_file()

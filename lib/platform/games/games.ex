@@ -1,6 +1,7 @@
 defmodule Platform.Games do
   alias Platform.BlackCards
   alias Platform.Games.Game
+  alias Platform.Players
   alias Platform.Players.Player
 
   def new do
@@ -16,7 +17,7 @@ defmodule Platform.Games do
   end
 
   def add_player(%Game{} = game, name) do
-    %{game | players: game.players ++ [Player.new(name)]}
+    %{game | players: game.players ++ [Players.create(%{name: name})]}
   end
 
   def current_player(_conn, %Game{} = game) do

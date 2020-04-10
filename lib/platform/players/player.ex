@@ -1,30 +1,23 @@
 defmodule Platform.Players.Player do
   use Ecto.Schema
-
-  alias Platform.WhiteCards
+  import Ecto.Changeset
+  alias Platform.WhiteCards.WhiteCard
 
   @primary_key {:id, :binary_id, autogenerate: true}
   schema "players" do
     field :name, :string
     field :all_white_cards, :string
-    field :points, :integer
-    field :reader, :boolean
-    field :selected_white_cards, :string
-    field :confirmed, :boolean
+    field :points, :integer, default: 0
+    field :reader, :boolean, default: false
+    field :confirmed, :boolean, default: false
+
+    embeds_many :selected_white_cards, WhiteCard
   end
 
-  def new(name) do
-    white_cards =
-      WhiteCards.list()
-      |> Enum.take_random(10)
-
-    %__MODULE__{
-      # id: :rand.uniform(10_000),
-      name: name,
-      all_white_cards: white_cards,
-      points: 0,
-      confirmed: false,
-      selected_white_cards: []
-    }
+  @fields ~w(name)a
+  def changeset(user, attrs, type) when type in [:create, :update] do
+    user
+    |> cast(attrs, @fields)
+    |> validate_required(@fields)
   end
 end

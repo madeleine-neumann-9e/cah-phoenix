@@ -1,4 +1,4 @@
-defmodule Platform.Cards.WhiteCard do
+defmodule Platform.WhiteCards.WhiteCard do
   use Ecto.Schema
   import Ecto.Changeset
 
