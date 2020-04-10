@@ -1,8 +1,7 @@
 defmodule Platform.Games do
-  alias Platform.Games.CurrentRound
-  alias Platform.Games.Game
-  alias Platform.Games.Player
   alias Platform.BlackCards
+  alias Platform.Games.Game
+  alias Platform.Players.Player
 
   def new do
     [black_card] =

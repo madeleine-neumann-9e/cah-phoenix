@@ -1,4 +1,4 @@
-defmodule Platform.Games.Player do
+defmodule Platform.Players.Player do
   use Ecto.Schema
 
   alias Platform.WhiteCards
