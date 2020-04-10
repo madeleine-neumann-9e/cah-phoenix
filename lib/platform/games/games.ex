@@ -24,19 +24,10 @@ defmodule Platform.Games do
     game |> Map.get(:players) |> List.first
   end
 
-  def select_white_card(%Game{} = game, %Player{} = player, white_card_id) do
+  def select_white_card(%Game{} = game, %Player{} = player, white_card_id) when is_integer(white_card_id) do
     player
     |> Players.select_white_card(white_card_id, game.black_card.picks)
     |> update_player(game)
-  end
-
-  def get_white_card_index(%Player{} = player, white_card) do
-    index = Enum.find_index(player.selected_white_cards, fn card -> card == white_card end)
-    if index do
-      index + 1
-    else
-      nil
-    end
   end
 
   def show_reset_button?(%Game{} = _game, %Player{} = player) do

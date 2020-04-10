@@ -31,4 +31,13 @@ defmodule Platform.Players do
       %{player | selected_white_cards: []}
     end
   end
+
+  def get_white_card_index(%Player{} = player, white_card_id) when is_integer(white_card_id) do
+    index = Enum.find_index(player.selected_white_cards, fn card -> card.id == white_card_id end)
+    if index do
+      index + 1
+    else
+      nil
+    end
+  end
 end
