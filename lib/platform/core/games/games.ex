@@ -2,11 +2,11 @@ defmodule Platform.Games do
   alias Platform.Games.CurrentRound
   alias Platform.Games.Game
   alias Platform.Games.Player
-  alias Platform.Cards
+  alias Platform.BlackCards
 
   def new do
     [black_card] =
-      Cards.list_black_cards()
+      BlackCards.list()
       |> Enum.take_random(1)
 
     %Game{
