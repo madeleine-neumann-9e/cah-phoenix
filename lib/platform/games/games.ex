@@ -24,9 +24,10 @@ defmodule Platform.Games do
     game |> Map.get(:players) |> List.first
   end
 
-  def select_white_card(%Game{} = game, %Player{} = current_player, white_card_id) do
-    new_player = Players.select_white_card(current_player, white_card_id, game.black_card.picks)
-    find_and_update_player(game, new_player)
+  def select_white_card(%Game{} = game, %Player{} = player, white_card_id) do
+    player
+    |> Players.select_white_card(white_card_id, game.black_card.picks)
+    |> update_player(game)
   end
 
   def get_white_card_index(%Player{} = player, white_card) do
@@ -47,16 +48,13 @@ defmodule Platform.Games do
   end
 
   def player_reset_white_cards(%Game{} = game, %Player{} = player) do
-    if show_reset_button?(game, player) do
-      new_player = %{player | selected_white_cards: []}
-      find_and_update_player(game, new_player)
-    else
-      game
-    end
+    player
+    |> Players.reset_selected_white_cards()
+    |> update_player(game)
   end
 
   # Private functions
-  defp find_and_update_player(%Game{} = game, %Player{} = updated_player) do
+  defp update_player(%Player{} = updated_player, %Game{} = game) do
     new_players =
       Enum.map(game.players, fn player ->
         if player.id == updated_player.id do

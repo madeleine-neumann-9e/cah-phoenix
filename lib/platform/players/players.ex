@@ -23,4 +23,12 @@ defmodule Platform.Players do
       end
     end
   end
+
+  def reset_selected_white_cards(%Player{} = player) do
+    if player.confirmed do
+      player
+    else
+      %{player | selected_white_cards: []}
+    end
+  end
 end
