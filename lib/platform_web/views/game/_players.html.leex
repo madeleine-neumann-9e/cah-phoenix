@@ -13,6 +13,9 @@
             <%= player.name %>
             -
             <%= player.points %>
+            <%= if Games.player_is_reader?(@game, player) do %>
+              READER
+            <% end %>
           </li>
 
         <% else %>

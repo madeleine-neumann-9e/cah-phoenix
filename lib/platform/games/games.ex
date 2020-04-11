@@ -19,7 +19,8 @@ defmodule Platform.Games do
 
   def start_round(%Game{} = game) do
     %{game |
-      black_card: BlackCards.random_card()
+      black_card: BlackCards.random_card(),
+      reader_player_id: find_next_reader_player_id(game)
     }
   end
 
@@ -47,7 +48,22 @@ defmodule Platform.Games do
     |> update_player(game)
   end
 
+  def player_is_reader?(%Game{reader_player_id: reader_player_id}, %Player{id: player_id}) do
+    reader_player_id == player_id
+  end
+
   # Private functions
+  defp find_next_reader_player_id(%Game{players: []}) do
+    nil
+  end
+  defp find_next_reader_player_id(%Game{players: players}) do
+    players |> List.first |> Map.get(:id)
+  end
+
+  defp find_player_by_id(%Game{} = game, player_id) do
+    Enum.find(game.players, fn player -> player.id == player_id end)
+  end
+
   defp update_player(%Player{} = updated_player, %Game{} = game) do
     new_players =
       Enum.map(game.players, fn player ->
