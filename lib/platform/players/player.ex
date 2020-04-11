@@ -17,13 +17,16 @@ defmodule Platform.Players.Player do
   def changeset(player, attrs, type) when type in [:create, :update] do
     player
     |> cast(attrs, @fields)
-    |> validate_required(@fields)
     |> generate_id()
+    |> validate_required(~w(id name)a)
   end
 
   # Private function
   defp generate_id(changeset) do
-    changeset
-    |> put_change(:id, Ecto.UUID.generate())
+    if get_field(changeset, :id) do
+      changeset
+    else
+      put_change(changeset, :id, Ecto.UUID.generate())
+    end
   end
 end

@@ -12,17 +12,20 @@ defmodule Platform.Games.Game do
     embeds_many :players, Player
   end
 
-  @fields ~w()a
-  def changeset(user, attrs, type) when type in [:create, :update] do
-    user
+  @fields ~w(reader_player_id)a
+  def changeset(game, attrs, type) when type in [:create, :update] do
+    game
     |> cast(attrs, @fields)
-    |> validate_required(@fields)
     |> generate_id()
+    |> validate_required(~w(id)a)
   end
 
   # Private functions
   defp generate_id(changeset) do
-    changeset
-    |> put_change(:id, Ecto.UUID.generate())
+    if get_field(changeset, :id) do
+      changeset
+    else
+      put_change(changeset, :id, Ecto.UUID.generate())
+    end
   end
 end
