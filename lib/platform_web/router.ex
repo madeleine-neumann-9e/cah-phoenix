@@ -13,6 +13,6 @@ defmodule PlatformWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
-    resources "/games", GameController, only: [:index, :show, :new, :create]
+    resources "/games", GameController, only: [:show, :create]
   end
 end
