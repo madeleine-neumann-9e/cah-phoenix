@@ -20,7 +20,7 @@ defmodule PlatformWeb.GameController do
       conn
       |> put_session(:current_player_id, Ecto.UUID.generate())
       |> put_session(:current_player_name, Platform.Players.generate_name())
-      |> live_render(Platform.GameLive)
+      |> live_render(Platform.GameLive, session: %{"game_id" => id})
     end
   end
 end
