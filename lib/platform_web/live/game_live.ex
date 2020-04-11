@@ -24,6 +24,14 @@ defmodule Platform.GameLive do
     {:noreply, assign(socket, %{game: new_game})}
   end
 
+  def handle_event("start_round", %{}, socket) do
+    new_game =
+      socket.assigns.game
+      |> Games.start_round()
+
+    {:noreply, assign(socket, %{game: new_game})}
+  end
+
   def handle_event("toggle_players_visible", %{}, socket) do
     players_visible = !socket.assigns.players_visible
 

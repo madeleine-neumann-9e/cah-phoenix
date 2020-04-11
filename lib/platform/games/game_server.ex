@@ -22,4 +22,13 @@ defmodule Playform.GameServer do
   def handle_cast({:add_player, name}, game) do
     {:noreply, Games.add_player(game, name)}
   end
+
+  def start(name) do
+    DynamicSupervisor.start_child(Platform.GameSupervisor, {Game, name: via_tuple(name)})
+  end
+
+  # Private functions
+  defp via_tuple(name) do
+    {:via, Registry, {Platform.GameRegistry, name}}
+  end
 end

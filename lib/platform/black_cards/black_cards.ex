@@ -11,6 +11,12 @@ defmodule Platform.BlackCards do
     }) end)
   end
 
+  def random_card do
+    list()
+    |> Enum.take_random(1)
+    |> List.first()
+  end
+
   def create(attrs \\ %{}) do
     %BlackCard{}
     |> BlackCard.changeset(attrs, :create)

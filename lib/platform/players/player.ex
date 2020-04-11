@@ -7,7 +7,6 @@ defmodule Platform.Players.Player do
   schema "players" do
     field :name, :string
     field :points, :integer, default: 0
-    field :reader, :boolean, default: false
     field :confirmed, :boolean, default: false
 
     embeds_many :all_white_cards, WhiteCard

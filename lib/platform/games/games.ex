@@ -5,19 +5,23 @@ defmodule Platform.Games do
   alias Platform.Players.Player
 
   def new do
-    [black_card] =
-      BlackCards.list()
-      |> Enum.take_random(1)
-
     %Game{
-      id: :rand.uniform(10000),
+      id: Ecto.UUID.generate(),
       players: [],
-      black_card: black_card
+      black_card: BlackCards.random_card()
     }
   end
 
   def add_player(%Game{} = game, name) do
-    %{game | players: game.players ++ [Players.create(%{name: name})]}
+    %{game |
+      players: game.players ++ [Players.create(%{name: name})]
+    }
+  end
+
+  def start_round(%Game{} = game) do
+    %{game |
+      black_card: BlackCards.random_card()
+    }
   end
 
   def current_player(_conn, %Game{} = game) do
