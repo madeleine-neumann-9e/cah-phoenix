@@ -41,12 +41,12 @@ $breakpoints: (
 
 .header {
   padding: $l-unit;
-  background-color: $antrazit;
   min-height: 30vh;
 
   &__container {
     display: grid;
     grid-template-columns: 1fr;
+    align-items: center;
 
     @include breakpoint('s') {
       grid-template-columns: 1fr 1fr;
@@ -57,13 +57,12 @@ $breakpoints: (
     display: flex;
   }
 
-  &__white-cards {
-    position: relative;
-    display: flex;
-  }
+
 
   &__image {
     margin: 0;
+    height: 400px;
+    width: auto;
   }
 }
 
