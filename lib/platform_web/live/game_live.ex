@@ -2,19 +2,24 @@ defmodule Platform.GameLive do
   use Phoenix.LiveView
   alias Platform.Games
 
-  def render(assigns), do: PlatformWeb.GameView.render("_game.html", assigns)
+  def render(assigns), do: PlatformWeb.GameView.render("show.html", assigns)
 
   def mount(_params, %{}, socket) do
     players_visible = false
+
     game =
       Games.new()
       |> Games.add_player("Sascha")
 
     current_player = Games.current_player(socket, game)
 
-    {:ok, assign(socket, %{game: game, current_player: current_player, players_visible: players_visible})}
+    {:ok,
+     assign(socket, %{
+       game: game,
+       current_player: current_player,
+       players_visible: players_visible
+     })}
   end
-
 
   def handle_event("add_player", %{}, socket) do
     new_game =
@@ -38,7 +43,6 @@ defmodule Platform.GameLive do
     {:noreply, assign(socket, %{players_visible: players_visible})}
   end
 
-
   def handle_event("reset_white_cards", %{}, socket) do
     new_game =
       socket.assigns.game
@@ -46,7 +50,6 @@ defmodule Platform.GameLive do
 
     {:noreply, assign(socket, %{game: new_game})}
   end
-
 
   def handle_event("select_card", %{"card-id" => card_id}, socket) do
     new_game =

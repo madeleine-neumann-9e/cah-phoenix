@@ -26,7 +26,6 @@ defmodule Platform.DataCase do
   end
 
   setup tags do
-
     :ok
   end
 

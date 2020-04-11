@@ -4,10 +4,12 @@ defmodule Platform.WhiteCards do
   def list do
     read_json_file()
     |> Enum.with_index(1)
-    |> Enum.map(fn {card, index} -> create(%{
-      id: index,
-      answer: card
-    }) end)
+    |> Enum.map(fn {card, index} ->
+      create(%{
+        id: index,
+        answer: card
+      })
+    end)
   end
 
   def random(count) do
@@ -26,6 +28,6 @@ defmodule Platform.WhiteCards do
   defp read_json_file do
     @black_card_file
     |> File.read!()
-    |> Jason.decode!
+    |> Jason.decode!()
   end
 end

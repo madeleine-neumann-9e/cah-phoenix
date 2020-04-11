@@ -29,7 +29,6 @@ defmodule PlatformWeb.ConnCase do
   end
 
   setup tags do
-
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
 end

@@ -12,5 +12,4 @@ defmodule Platform.WhiteCards.WhiteCard do
     |> cast(attrs, @fields)
     |> validate_required(@fields)
   end
-
 end

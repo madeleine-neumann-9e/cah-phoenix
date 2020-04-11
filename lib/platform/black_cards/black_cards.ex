@@ -4,11 +4,13 @@ defmodule Platform.BlackCards do
   def list do
     read_json_file()
     |> Enum.with_index(1)
-    |> Enum.map(fn {card, index} -> create(%{
-      id: index,
-      question: card["text"],
-      picks: card["pick"]
-    }) end)
+    |> Enum.map(fn {card, index} ->
+      create(%{
+        id: index,
+        question: card["text"],
+        picks: card["pick"]
+      })
+    end)
   end
 
   def random_card do
@@ -28,6 +30,6 @@ defmodule Platform.BlackCards do
   defp read_json_file do
     @black_card_file
     |> File.read!()
-    |> Jason.decode!
+    |> Jason.decode!()
   end
 end

@@ -12,23 +12,23 @@ defmodule Platform.Games do
   end
 
   def add_player(%Game{} = game, name) do
-    %{game |
-      players: game.players ++ [Players.create(%{name: name})]
-    }
+    %{game | players: game.players ++ [Players.create(%{name: name})]}
   end
 
   def start_round(%Game{} = game) do
-    %{game |
-      black_card: BlackCards.random_card(),
-      reader_player_id: find_next_reader_player_id(game)
+    %{
+      game
+      | black_card: BlackCards.random_card(),
+        reader_player_id: find_next_reader_player_id(game)
     }
   end
 
   def current_player(_conn, %Game{} = game) do
-    game |> Map.get(:players) |> List.first
+    game |> Map.get(:players) |> List.first()
   end
 
-  def select_white_card(%Game{} = game, %Player{} = player, white_card_id) when is_integer(white_card_id) do
+  def select_white_card(%Game{} = game, %Player{} = player, white_card_id)
+      when is_integer(white_card_id) do
     player
     |> Players.select_white_card(white_card_id, game.black_card.picks)
     |> update_player(game)
@@ -38,7 +38,9 @@ defmodule Platform.Games do
     length(player.selected_white_cards) > 0 && !player.confirmed
   end
 
-  def show_confirm_button?(%Game{black_card: black_card}, %Player{selected_white_cards: selected_white_cards}) do
+  def show_confirm_button?(%Game{black_card: black_card}, %Player{
+        selected_white_cards: selected_white_cards
+      }) do
     length(selected_white_cards) == black_card.picks
   end
 
@@ -56,8 +58,9 @@ defmodule Platform.Games do
   defp find_next_reader_player_id(%Game{players: []}) do
     nil
   end
+
   defp find_next_reader_player_id(%Game{players: players}) do
-    players |> List.first |> Map.get(:id)
+    players |> List.first() |> Map.get(:id)
   end
 
   defp find_player_by_id(%Game{} = game, player_id) do
@@ -73,6 +76,7 @@ defmodule Platform.Games do
           player
         end
       end)
+
     %{game | players: new_players}
   end
 end
