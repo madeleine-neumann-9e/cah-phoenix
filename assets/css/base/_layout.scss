@@ -57,12 +57,14 @@ $breakpoints: (
     display: flex;
   }
 
-
-
   &__image {
     margin: 0;
     height: 400px;
     width: auto;
+  }
+
+  &__create-room {
+    display: flex;
   }
 }
 

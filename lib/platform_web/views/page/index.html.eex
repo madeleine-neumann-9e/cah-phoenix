@@ -6,6 +6,10 @@
       </h1>
       <p class="paragraph paragraph--white">A party game for bored out and horrible people </p>
       <button class="button button--confirm">Create new Room</button>
+      <div class="header__create-room">
+        <input type="checkbox" id="isPrivate" name="vehiisPrivatecle1" value="true">
+        <label class="paragraph--white" for="isPrivate">Create a private room</label><br>
+      </div>
     </article>
     <article class="header__card-container">
       <img src="<%= Routes.static_path(@conn, "/images/debt.png")  %>" class="header__image">
