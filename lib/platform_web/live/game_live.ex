@@ -4,12 +4,12 @@ defmodule Platform.GameLive do
 
   def render(assigns), do: PlatformWeb.GameView.render("show.html", assigns)
 
-  def mount(_params, %{}, socket) do
+  def mount(_params, %{"current_player_id" => current_player_id, "current_player_name" => current_player_name}, socket) do
     players_visible = false
 
     game =
       Games.new()
-      |> Games.add_player("Sascha")
+      |> Games.add_player(current_player_id, current_player_name)
 
     current_player = Games.current_player(socket, game)
 
@@ -19,14 +19,6 @@ defmodule Platform.GameLive do
        current_player: current_player,
        players_visible: players_visible
      })}
-  end
-
-  def handle_event("add_player", %{}, socket) do
-    new_game =
-      socket.assigns.game
-      |> Games.add_player("Madeleine")
-
-    {:noreply, assign(socket, %{game: new_game})}
   end
 
   def handle_event("start_round", %{}, socket) do
