@@ -4,7 +4,7 @@
       <h1 class="headline">
         Cards against Quarantine!
       </h1>
-      <p class="paragraph paragraph--white">A party game for bored out and horrible people </p>
+      <p class="paragraph paragraph--white">A party game for bored out people </p>
       <%= render "_form.html", Map.put(assigns, :action, Routes.game_path(@conn, :create)) %>
     </article>
     <img src="<%= Routes.static_path(@conn, "/images/debt.png")  %>" class="header__image">
