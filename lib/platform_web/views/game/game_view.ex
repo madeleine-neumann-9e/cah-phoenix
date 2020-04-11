@@ -9,10 +9,14 @@ defmodule PlatformWeb.GameView do
   end
   def replace_placeholder(text, white_cards) do
     if String.contains?(text, "_") do
-      text |> String.replace("_", ~s(<span style="color: red">[...]</span>))
+      Enum.reduce(white_cards, text, fn white_card, acc ->
+
+        String.replace(acc, "_", ~s(<span style="color: red">#{String.trim_trailing(white_card.answer, ".")}</span>), global: false)
+      end)
+      |> String.replace("_", ~s(<span style="color: red">[...]</span>))
     else
       white_card = white_cards |> List.first
-      text <> ~s(<span style="color: red">#{white_card.answer}</span>)
+      text <> ~s(<br><span style="color: red">#{white_card.answer}</span>)
     end
   end
 end
