@@ -1,0 +1,28 @@
+.public-rooms {
+
+
+  &__container  {
+    display: grid;
+    grid-gap: $m-unit;
+    grid-template-columns: 1fr;
+    align-items: center;
+
+    @include breakpoint('xs') {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @include breakpoint('s') {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @include breakpoint('m') {
+      grid-template-columns: 1fr 1fr 1fr 1fr
+    }
+  }
+
+  &__room {
+    border: 1px solid $white;
+    padding: $s-unit;
+    color: $white;
+  }
+}

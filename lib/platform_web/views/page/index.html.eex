@@ -9,6 +9,6 @@
     </article>
     <img src="<%= Routes.static_path(@conn, "/images/debt.png")  %>" class="header__image">
   </div>
-
-
 </section>
+
+<%= render "_public-rooms.html", assigns %>

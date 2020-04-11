@@ -42,6 +42,8 @@ $breakpoints: (
 .header {
   padding: $l-unit;
   min-height: 30vh;
+  border-bottom: 1px solid $antrazit;
+  margin-bottom: $l-unit;
 
   &__container {
     display: grid;
@@ -54,7 +56,7 @@ $breakpoints: (
   }
 
   &__image {
-    margin: 0 auto $m-unit auto;
+    margin: 0 auto $l-unit auto;
     height: auto;
     max-width: 300px;
     order: 1;
@@ -79,16 +81,17 @@ $breakpoints: (
     flex-direction: row;
     justify-content: space-between;
     margin-bottom: $m-unit;
+    align-items: center;
   }
 
   &__form {
     display: flex;
-    align-items: center;
     justify-content: space-between;
   }
 
   &__checkbox {
     margin-right: $s-unit/2;
+    margin-left: $s-unit/2;
   }
 }
 
