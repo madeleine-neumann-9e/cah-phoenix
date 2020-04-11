@@ -11,8 +11,8 @@ defmodule Platform.Games do
     |> start_round()
   end
 
-  def add_player(%Game{} = game, name) do
-    %{game | players: game.players ++ [Players.create(%{name: name})]}
+  def add_player(%Game{} = game, id, name) do
+    %{game | players: game.players ++ [Players.create(%{id: id, name: name})]}
   end
 
   def start_round(%Game{} = game) do
