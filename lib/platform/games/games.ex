@@ -4,9 +4,9 @@ defmodule Platform.Games do
   alias Platform.Players
   alias Platform.Players.Player
 
-  def new do
+  def new(attrs \\ %{}) do
     %Game{}
-    |> Game.changeset(%{}, :create)
+    |> Game.changeset(attrs, :create)
     |> Ecto.Changeset.apply_action!(:insert)
     |> start_round()
   end

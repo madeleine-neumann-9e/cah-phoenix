@@ -1,9 +1,15 @@
 defmodule PlatformWeb.GameController do
   use PlatformWeb, :controller
   alias Platform.Games
+  alias Platform.Games.GameServer
 
   def create(conn, %{"game" => game_params}) do
-    IO.inspect game_params
+    game = Games.new(game_params)
+
+    {:ok, _pid} = DynamicSupervisor.start_child(Platform.GameSupervisor, {GameServer, name: GameServer.via_tuple(game.id)})
+
+    conn
+    |> redirect(to: Routes.game_path(conn, :show, game))
   end
 
   def show(conn, %{"id" => id}) do
