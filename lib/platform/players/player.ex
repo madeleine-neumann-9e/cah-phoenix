@@ -14,9 +14,16 @@ defmodule Platform.Players.Player do
   end
 
   @fields ~w(name)a
-  def changeset(user, attrs, type) when type in [:create, :update] do
-    user
+  def changeset(player, attrs, type) when type in [:create, :update] do
+    player
     |> cast(attrs, @fields)
     |> validate_required(@fields)
+    |> generate_id()
+  end
+
+  # Private function
+  defp generate_id(changeset) do
+    changeset
+    |> put_change(:id, Ecto.UUID.generate())
   end
 end

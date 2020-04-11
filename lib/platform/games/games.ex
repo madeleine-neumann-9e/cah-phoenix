@@ -5,11 +5,10 @@ defmodule Platform.Games do
   alias Platform.Players.Player
 
   def new do
-    %Game{
-      id: Ecto.UUID.generate(),
-      players: [],
-      black_card: BlackCards.random_card()
-    }
+    %Game{}
+    |> Game.changeset(%{}, :create)
+    |> Ecto.Changeset.apply_action!(:insert)
+    |> start_round()
   end
 
   def add_player(%Game{} = game, name) do
