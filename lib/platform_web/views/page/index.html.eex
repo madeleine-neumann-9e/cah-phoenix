@@ -1,6 +1,6 @@
 <section class="header">
   <div class="content header__container">
-    <article>
+    <article class="header__description">
       <h1 class="headline">
         Cards against Quarantine!
       </h1>
@@ -13,9 +13,7 @@
         </form>
       </div>
     </article>
-    <article class="header__card-container">
-      <img src="<%= Routes.static_path(@conn, "/images/debt.png")  %>" class="header__image">
-    </article>
+    <img src="<%= Routes.static_path(@conn, "/images/debt.png")  %>" class="header__image">
   </div>
 
 

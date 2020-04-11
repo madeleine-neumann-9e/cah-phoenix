@@ -48,19 +48,29 @@ $breakpoints: (
     grid-template-columns: 1fr;
     align-items: center;
 
-    @include breakpoint('s') {
+    @include breakpoint('m') {
       grid-template-columns: 1fr 1fr;
     }
   }
 
-  &__card-container {
-    display: flex;
+  &__image {
+    margin: 0 auto $m-unit auto;
+    height: auto;
+    max-width: 300px;
+    order: 1;
+
+    @include breakpoint('m') {
+      order: 2;
+      max-width: 400px;
+    }
   }
 
-  &__image {
-    margin: 0;
-    height: 400px;
-    width: auto;
+  &__description {
+    order: 2;
+
+    @include breakpoint('m') {
+      order: 1;
+    }
   }
 
   &__create-room {
@@ -68,6 +78,7 @@ $breakpoints: (
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-bottom: $m-unit;
   }
 
   &__form {
