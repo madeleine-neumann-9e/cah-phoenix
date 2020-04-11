@@ -1,4 +1,4 @@
-defmodule Playform.GameServer do
+defmodule Platform.Games.GameServer do
   use GenServer
 
   alias Platform.Games
@@ -28,7 +28,7 @@ defmodule Playform.GameServer do
   end
 
   # Private functions
-  defp via_tuple(name) do
+  def via_tuple(name) do
     {:via, Registry, {Platform.GameRegistry, name}}
   end
 end

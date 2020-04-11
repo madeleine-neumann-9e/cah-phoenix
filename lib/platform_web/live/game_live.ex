@@ -1,11 +1,18 @@
 defmodule Platform.GameLive do
   use Phoenix.LiveView
   alias Platform.Games
+  alias Platform.Games.GameServer
 
   def render(assigns), do: PlatformWeb.GameView.render("show.html", assigns)
 
-  def mount(_params, %{"current_player_id" => current_player_id, "current_player_name" => current_player_name}, socket) do
+  def mount(params, %{"game_id" => game_id, "current_player_id" => current_player_id, "current_player_name" => current_player_name}, socket) do
     players_visible = false
+
+    IO.inspect game_id
+    IO.inspect current_player_id
+
+    #{:ok, _pid} =
+    #  DynamicSupervisor.start_child(Platform.GameSupervisor, {GameServer, name: GameServer.via_tuple(game_id)})
 
     game =
       Games.new()
