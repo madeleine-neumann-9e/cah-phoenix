@@ -5,10 +5,12 @@
         Cards against Quarantine!
       </h1>
       <p class="paragraph paragraph--white">A party game for bored out and horrible people </p>
-      <button class="button button--confirm">Create new Room</button>
       <div class="header__create-room">
-        <input type="checkbox" id="isPrivate" name="vehiisPrivatecle1" value="true">
-        <label class="paragraph--white" for="isPrivate">Create a private room</label><br>
+        <button class="button button--confirm">Create new Room</button>
+        <form action="" class="header__form">
+          <input class="header__checkbox" type="checkbox" id="isPrivate" name="isPrivate" value="true">
+          <label class="paragraph--white" for="isPrivate">I want a private room</label><br>
+        </form>
       </div>
     </article>
     <article class="header__card-container">

@@ -64,7 +64,20 @@ $breakpoints: (
   }
 
   &__create-room {
+    max-width: 360px;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__checkbox {
+    margin-right: $s-unit/2;
   }
 }
 
