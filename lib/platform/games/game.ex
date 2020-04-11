@@ -7,12 +7,14 @@ defmodule Platform.Games.Game do
 
   @primary_key {:id, :binary_id, autogenerate: true}
   schema "games" do
+    field :private, :boolean, default: false
+
     belongs_to :reader_player, Player
     belongs_to :black_card, BlackCard
     embeds_many :players, Player
   end
 
-  @fields ~w(reader_player_id)a
+  @fields ~w(private reader_player_id)a
   def changeset(game, attrs, type) when type in [:create, :update] do
     game
     |> cast(attrs, @fields)

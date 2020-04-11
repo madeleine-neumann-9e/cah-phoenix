@@ -1,5 +1,13 @@
 defmodule PlatformWeb.GameController do
   use PlatformWeb, :controller
+  alias Platform.Games
+
+  def index(conn, _params) do
+    render(conn, "index.html")
+  end
+
+  #def create(conn, %{"game" => game_params}) do
+  #end
 
   def show(conn, %{"id" => id}) do
     if get_session(conn, :current_player_id) do
