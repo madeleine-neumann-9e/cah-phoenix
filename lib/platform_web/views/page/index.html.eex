@@ -5,13 +5,7 @@
         Cards against Quarantine!
       </h1>
       <p class="paragraph paragraph--white">A party game for bored out and horrible people </p>
-      <div class="header__create-room">
-        <button class="button button--confirm">Create new Room</button>
-        <form action="" class="header__form">
-          <input class="header__checkbox" type="checkbox" id="isPrivate" name="isPrivate" value="true">
-          <label class="paragraph--white" for="isPrivate">I want a private room</label><br>
-        </form>
-      </div>
+      <%= render "_form.html", Map.put(assigns, :action, Routes.game_path(@conn, :create)) %>
     </article>
     <img src="<%= Routes.static_path(@conn, "/images/debt.png")  %>" class="header__image">
   </div>

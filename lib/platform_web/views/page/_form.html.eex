@@ -1,0 +1,7 @@
+<%= form_for @changeset, @action, [class: "header__form"], fn f -> %>
+  <div class="header__create-room">
+    <button class="button button--confirm">Create new Room</button>
+      <%= checkbox f, :private, class: "header__checkbox" %>
+      <%= label f, :private, "I want a private room", class: "paragraph--white" %>
+  </div>
+<% end %>

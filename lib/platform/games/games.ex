@@ -15,6 +15,10 @@ defmodule Platform.Games do
     %{game | players: game.players ++ [Players.create(%{id: id, name: name})]}
   end
 
+  def change(attrs \\ %{}) do
+    Game.changeset(%Game{}, attrs, :create)
+  end
+
   def start_round(%Game{} = game) do
     %{
       game
