@@ -6,13 +6,13 @@ defmodule Platform.GameLive do
   def render(assigns), do: PlatformWeb.GameView.render("show.html", assigns)
 
   def mount(_params, %{"game_id" => game_id, "current_player_id" => current_player_id, "current_player_name" => current_player_name}, socket) do
-    players_visible = false
-
+    :ok = Phoenix.PubSub.subscribe(Platform.PubSub, game_id)
+    IO.puts "Subscribed to #{game_id}"
     GameServer.add_player(game_id, current_player_id, current_player_name)
 
     {:ok,
       socket
-      |> assign(%{players_visible: players_visible})
+      |> assign(%{players_visible: false})
       |> assign_game(game_id)
     }
   end
@@ -20,6 +20,7 @@ defmodule Platform.GameLive do
   def handle_event("start_round", %{}, socket) do
     game = GameServer.get_game(socket.assigns.game_id)
     GameServer.update_game(socket.assigns.game_id, game |> Games.start_round())
+    :ok = Phoenix.PubSub.broadcast(Platform.PubSub, socket.assigns.game_id, :update)
     {:noreply, assign_game(socket)}
   end
 
@@ -41,6 +42,10 @@ defmodule Platform.GameLive do
 
     GameServer.update_game(socket.assigns.game_id, game |> Games.select_white_card(socket.assigns.current_player, String.to_integer(card_id)))
 
+    {:noreply, assign_game(socket)}
+  end
+
+  def handle_info(:update, socket) do
     {:noreply, assign_game(socket)}
   end
 
