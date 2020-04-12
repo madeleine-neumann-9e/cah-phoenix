@@ -18,16 +18,13 @@ defmodule Platform.GameLive do
   end
 
   def handle_event("start_round", %{}, socket) do
-    new_game =
-      socket.assigns.game
-      |> Games.start_round()
-
-    {:noreply, assign(socket, %{game: new_game})}
+    game = GameServer.get_game(socket.assigns.game_id)
+    GameServer.update_game(socket.assigns.game_id, game |> Games.start_round())
+    {:noreply, assign_game(socket)}
   end
 
   def handle_event("toggle_players_visible", %{}, socket) do
     players_visible = !socket.assigns.players_visible
-
     {:noreply, assign(socket, %{players_visible: players_visible})}
   end
 
@@ -40,13 +37,11 @@ defmodule Platform.GameLive do
   end
 
   def handle_event("select_card", %{"card-id" => card_id}, socket) do
-    new_game =
-      socket.assigns.game
-      |> Games.select_white_card(socket.assigns.current_player, String.to_integer(card_id))
+    game = GameServer.get_game(socket.assigns.game_id)
 
-    current_player = Games.current_player(socket, new_game)
+    GameServer.update_game(socket.assigns.game_id, game |> Games.select_white_card(socket.assigns.current_player, String.to_integer(card_id)))
 
-    {:noreply, assign(socket, %{game: new_game, current_player: current_player})}
+    {:noreply, assign_game(socket)}
   end
 
 
@@ -58,7 +53,6 @@ defmodule Platform.GameLive do
 
   defp assign_game(%{assigns: %{game_id: game_id}} = socket) do
     game = GameServer.get_game(game_id)
-    IO.inspect game
     assign(socket, game: game)
   end
 end

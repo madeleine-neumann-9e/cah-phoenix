@@ -12,7 +12,11 @@ defmodule Platform.Games do
   end
 
   def add_player(%Game{} = game, id, name) do
-    %{game | players: game.players ++ [Players.create(%{id: id, name: name})]}
+    if find_player_by_id(game, id) do
+      game
+    else
+      %{game | players: game.players ++ [Players.create(%{id: id, name: name})]}
+    end
   end
 
   def change(attrs \\ %{}) do
@@ -27,8 +31,11 @@ defmodule Platform.Games do
     }
   end
 
+  def find_player_by_id(%Game{} = game, player_id) do
+    Enum.find(game.players, fn player -> player.id == player_id end)
+  end
+
   def current_player(_conn, %Game{} = game) do
-    # Platform.Players.create(%{name: "blub"})
     game |> Map.get(:players) |> List.first()
   end
 
@@ -66,10 +73,6 @@ defmodule Platform.Games do
 
   defp find_next_reader_player_id(%Game{players: players}) do
     players |> List.first() |> Map.get(:id)
-  end
-
-  defp find_player_by_id(%Game{} = game, player_id) do
-    Enum.find(game.players, fn player -> player.id == player_id end)
   end
 
   defp update_player(%Player{} = updated_player, %Game{} = game) do
