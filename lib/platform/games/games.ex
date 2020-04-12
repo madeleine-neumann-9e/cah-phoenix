@@ -28,6 +28,7 @@ defmodule Platform.Games do
   end
 
   def current_player(_conn, %Game{} = game) do
+    # Platform.Players.create(%{name: "blub"})
     game |> Map.get(:players) |> List.first()
   end
 

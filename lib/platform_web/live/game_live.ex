@@ -5,27 +5,16 @@ defmodule Platform.GameLive do
 
   def render(assigns), do: PlatformWeb.GameView.render("show.html", assigns)
 
-  def mount(params, %{"game_id" => game_id, "current_player_id" => current_player_id, "current_player_name" => current_player_name}, socket) do
+  def mount(_params, %{"game_id" => game_id, "current_player_id" => current_player_id, "current_player_name" => current_player_name}, socket) do
     players_visible = false
 
-    IO.inspect game_id
-    IO.inspect current_player_id
-
-    #{:ok, _pid} =
-    #  DynamicSupervisor.start_child(Platform.GameSupervisor, {GameServer, name: GameServer.via_tuple(game_id)})
-
-    game =
-      Games.new()
-      |> Games.add_player(current_player_id, current_player_name)
-
-    current_player = Games.current_player(socket, game)
+    GameServer.add_player(game_id, current_player_id, current_player_name)
 
     {:ok,
-     assign(socket, %{
-       game: game,
-       current_player: current_player,
-       players_visible: players_visible
-     })}
+      socket
+      |> assign(%{players_visible: players_visible})
+      |> assign_game(game_id)
+    }
   end
 
   def handle_event("start_round", %{}, socket) do
@@ -58,5 +47,18 @@ defmodule Platform.GameLive do
     current_player = Games.current_player(socket, new_game)
 
     {:noreply, assign(socket, %{game: new_game, current_player: current_player})}
+  end
+
+
+  defp assign_game(socket, game_id) do
+    socket
+    |> assign(game_id: game_id)
+    |> assign_game()
+  end
+
+  defp assign_game(%{assigns: %{game_id: game_id}} = socket) do
+    game = GameServer.get_game(game_id)
+    IO.inspect game
+    assign(socket, game: game)
   end
 end
