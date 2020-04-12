@@ -13,14 +13,19 @@ defmodule PlatformWeb.GameController do
   end
 
   def show(conn, %{"id" => id}) do
-    if get_session(conn, :current_player_id) do
-      conn
-      |> live_render(Platform.GameLive, session: %{"game_id" => id})
+    if GameServer.game_exists?(id) do
+      if get_session(conn, :current_player_id) do
+        conn
+        |> live_render(Platform.GameLive, session: %{"game_id" => id})
+      else
+        conn
+        |> put_session(:current_player_id, Ecto.UUID.generate())
+        |> put_session(:current_player_name, Platform.Players.generate_name())
+        |> live_render(Platform.GameLive, session: %{"game_id" => id})
+      end
     else
       conn
-      |> put_session(:current_player_id, Ecto.UUID.generate())
-      |> put_session(:current_player_name, Platform.Players.generate_name())
-      |> live_render(Platform.GameLive, session: %{"game_id" => id})
+      |> redirect(to: Routes.page_path(conn, :index))
     end
   end
 end

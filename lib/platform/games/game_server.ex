@@ -12,6 +12,10 @@ defmodule Platform.Games.GameServer do
     GenServer.start_link(__MODULE__, game, options)
   end
 
+  def game_exists?(game_id) do
+    Registry.lookup(Platform.GameRegistry, game_id) != []
+  end
+
   def get_game(game_id) do
     GenServer.call(via_tuple(game_id), :game)
   end
@@ -40,7 +44,7 @@ defmodule Platform.Games.GameServer do
   end
 
   @impl true
-  def handle_cast({:update, updated_game}, game) do
+  def handle_cast({:update, updated_game}, _game) do
     {:noreply, updated_game}
   end
 
