@@ -7,12 +7,11 @@ defmodule Platform.GameLive do
 
   def mount(_params, %{"game_id" => game_id, "current_player_id" => current_player_id, "current_player_name" => current_player_name}, socket) do
     :ok = Phoenix.PubSub.subscribe(Platform.PubSub, game_id)
-    IO.puts "Subscribed to #{game_id}"
     GameServer.add_player(game_id, current_player_id, current_player_name)
 
     {:ok,
       socket
-      |> assign(%{players_visible: false})
+      |> assign(%{players_visible: false, current_player_id: current_player_id})
       |> assign_game(game_id)
     }
   end
@@ -40,7 +39,7 @@ defmodule Platform.GameLive do
   def handle_event("select_card", %{"card-id" => card_id}, socket) do
     game = GameServer.get_game(socket.assigns.game_id)
 
-    GameServer.update_game(socket.assigns.game_id, game |> Games.select_white_card(socket.assigns.current_player, String.to_integer(card_id)))
+    GameServer.update_game(socket.assigns.game_id, game |> Games.select_white_card(socket.assigns.current_player_id, String.to_integer(card_id)))
 
     {:noreply, assign_game(socket)}
   end
@@ -48,7 +47,6 @@ defmodule Platform.GameLive do
   def handle_info(:update, socket) do
     {:noreply, assign_game(socket)}
   end
-
 
   defp assign_game(socket, game_id) do
     socket

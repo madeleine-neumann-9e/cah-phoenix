@@ -27,7 +27,8 @@ defmodule Platform.Games do
     %{
       game
       | black_card: BlackCards.random_card(),
-        reader_player_id: find_next_reader_player_id(game)
+        reader_player_id: find_next_reader_player_id(game),
+        players: Enum.map(game.players, fn player -> Players.reset_for_new_round(player) end)
     }
   end
 
@@ -35,13 +36,14 @@ defmodule Platform.Games do
     Enum.find(game.players, fn player -> player.id == player_id end)
   end
 
-  def current_player(_conn, %Game{} = game) do
-    game |> Map.get(:players) |> List.first()
+  def current_player(%Game{} = game, current_player_id) do
+    find_player_by_id(game, current_player_id)
   end
 
-  def select_white_card(%Game{} = game, %Player{} = player, white_card_id)
+  def select_white_card(%Game{} = game, player_id, white_card_id)
       when is_integer(white_card_id) do
-    player
+    game
+    |> find_player_by_id(player_id)
     |> Players.select_white_card(white_card_id, game.black_card.picks)
     |> update_player(game)
   end

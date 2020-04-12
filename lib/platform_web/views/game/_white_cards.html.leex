@@ -1,15 +1,15 @@
 <div class="white-cards">
   <div class="white-cards__container">
-    <%= for white_card <- Games.current_player(@socket, @game).all_white_cards do %>
-      <%= if Players.get_white_card_index(Games.current_player(@socket, @game), white_card.id) do %>
+    <%= for white_card <- Games.current_player(@game, @current_player_id).all_white_cards do %>
+      <%= if Players.get_white_card_index(Games.current_player(@game, @current_player_id), white_card.id) do %>
         <div class="white-cards__card white-cards__card--active" phx-click="select_card" phx-value-card-id="<%= white_card.id %>">
       <% else %>
         <div class="white-cards__card" phx-click="select_card" phx-value-card-id="<%= white_card.id %>">
       <% end %>
 
-          <%= if Players.get_white_card_index(Games.current_player(@socket, @game), white_card.id) do %>
+          <%= if Players.get_white_card_index(Games.current_player(@game, @current_player_id), white_card.id) do %>
             <div class="white-cards__picked-bubble">
-              <%= Players.get_white_card_index(Games.current_player(@socket, @game), white_card.id) %>
+              <%= Players.get_white_card_index(Games.current_player(@game, @current_player_id), white_card.id) %>
             </div>
           <% end %>
           <p class="paragraph paragraph--center"><%= raw white_card.answer %></p>
@@ -17,10 +17,10 @@
     <% end %>
   </div>
 
-  <%= if Games.show_reset_button?(@game, Games.current_player(@socket, @game)) do %>
+  <%= if Games.show_reset_button?(@game, Games.current_player(@game, @current_player_id)) do %>
     <button class="button button--cancel" phx-click="reset_white_cards">Cancel</button>
   <% end %>
-  <%= if Games.show_confirm_button?(@game, Games.current_player(@socket, @game)) do %>
+  <%= if Games.show_confirm_button?(@game, Games.current_player(@game, @current_player_id)) do %>
     <button class="button button--confirm">Confirm</button>
   <% end %>
 </div>

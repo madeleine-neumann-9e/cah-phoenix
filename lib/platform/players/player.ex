@@ -13,7 +13,7 @@ defmodule Platform.Players.Player do
     embeds_many :selected_white_cards, WhiteCard
   end
 
-  @fields ~w(name)a
+  @fields ~w(id name)a
   def changeset(player, attrs, type) when type in [:create, :update] do
     player
     |> cast(attrs, @fields)

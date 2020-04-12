@@ -1,7 +1,7 @@
 <div class="black-cards">
   <div class="black-cards__container">
     <div class="black-cards__card">
-      <h3 class="headline headline--white headline--center"><%= raw replace_placeholder(@game.black_card.question,  Platform.Games.current_player(@socket, @game).selected_white_cards) %></h3>
+      <h3 class="headline headline--white headline--center"><%= raw replace_placeholder(@game.black_card.question,  Games.current_player(@game, @current_player_id).selected_white_cards) %></h3>
       <p class="paragraph paragraph--center">Cards to lay down: <%= @game.black_card.picks %></p>
     </div>
   </div>

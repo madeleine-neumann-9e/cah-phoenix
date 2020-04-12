@@ -1,14 +1,10 @@
-<%= if @players_visible do %>
-  <aside class="players players--active">
-<% else %>
-  <aside class="players">
-<% end %>
+<aside class="players <%= if @players_visible do %>players--active<% end %>">
   <button phx-click="toggle_players_visible" class="players__flag">Players</button>
   <div class="players__box">
   <h3 class="headline headline--black headline--underlined">Players</h3>
     <ul class="players__list">
       <%= for player <- @game.players do %>
-        <%= if Platform.Games.current_player(@socket, @game).id == player.id do %>
+        <%= if Games.current_player(@game, @current_player_id).id == player.id do %>
           <li class="players--current-reader players__list-item">
             <%= player.name %>
             -

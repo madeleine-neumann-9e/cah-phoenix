@@ -24,6 +24,16 @@ defmodule Platform.Players do
     end
   end
 
+  def reset_for_new_round(%Player{} = player) do
+    if player.confirmed do
+      new_white_cards = player.all_white_cards -- player.selected_white_cards ++ WhiteCards.random(length(player.selected_white_cards))
+      %{player | all_white_cards: new_white_cards, selected_white_cards: []}
+    else
+      %{player | selected_white_cards: []}
+    end
+  end
+
+
   def reset_selected_white_cards(%Player{} = player) do
     if player.confirmed do
       player
