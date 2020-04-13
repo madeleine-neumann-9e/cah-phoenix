@@ -1,0 +1,30 @@
+{
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "_build": true,
+    ".mix_tasks": true,
+    ".elixir_ls": true,
+    ".vscode": true,
+    "node_modules": true,
+    "assets/node_modules/bootstrap/scss": false,
+    "deps": true
+  },
+  "search.exclude": {
+    "rel/config.exs": true,
+    "priv/static": true,
+    "priv/templates": true,
+    "priv/gettext": true,
+    "priv/repo/dump.sql": true,
+    "priv/repo/structure.sql": true,
+    "node_modules": true,
+    "**/package-lock.json": true,
+    "deps": true,
+    "log": true,
+    "cover": true
+  },
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+  "files.trimTrailingWhitespace": true,
+  "css.validate": false
+}
