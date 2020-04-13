@@ -44,6 +44,14 @@ defmodule Platform.GameLive do
     {:noreply, assign_game(socket)}
   end
 
+  def handle_event("confirm", %{}, socket) do
+    game = GameServer.get_game(socket.assigns.game_id)
+
+    GameServer.update_game(socket.assigns.game_id, game |> Games.confirm_white_cards(socket.assigns.current_player_id))
+
+    {:noreply, assign_game(socket)}
+  end
+
   def handle_info(:update, socket) do
     {:noreply, assign_game(socket)}
   end

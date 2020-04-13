@@ -48,14 +48,21 @@ defmodule Platform.Games do
     |> update_player(game)
   end
 
+  def confirm_white_cards(%Game{} = game, player_id) do
+    game
+    |> find_player_by_id(player_id)
+    |> Players.confirm_white_cards(game.black_card.picks)
+    |> update_player(game)
+  end
+
   def show_reset_button?(%Game{} = _game, %Player{} = player) do
     length(player.selected_white_cards) > 0 && !player.confirmed
   end
 
   def show_confirm_button?(%Game{black_card: black_card}, %Player{
-        selected_white_cards: selected_white_cards
+        selected_white_cards: selected_white_cards, confirmed: confirmed
       }) do
-    length(selected_white_cards) == black_card.picks
+    length(selected_white_cards) == black_card.picks && !confirmed
   end
 
   def player_reset_white_cards(%Game{} = game, %Player{} = player) do

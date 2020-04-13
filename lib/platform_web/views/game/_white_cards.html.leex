@@ -17,10 +17,7 @@
     <% end %>
   </div>
 
-  <%= if Games.show_reset_button?(@game, Games.current_player(@game, @current_player_id)) do %>
-    <button class="button button--cancel" phx-click="reset_white_cards">Cancel</button>
-  <% end %>
   <%= if Games.show_confirm_button?(@game, Games.current_player(@game, @current_player_id)) do %>
-    <button class="button button--confirm">Confirm</button>
+    <button class="button button--confirm" phx-click="confirm">Confirm</button>
   <% end %>
 </div>

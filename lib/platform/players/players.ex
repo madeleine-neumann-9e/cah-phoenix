@@ -10,6 +10,7 @@ defmodule Platform.Players do
     |> Ecto.Changeset.apply_action!(:insert)
   end
 
+  def select_white_card(%Player{confirmed: true} = player, _, _), do: player
   def select_white_card(%Player{} = player, white_card_id, max_picks) do
     white_card = Enum.find(player.all_white_cards, fn card -> card.id == white_card_id end)
 
@@ -26,13 +27,21 @@ defmodule Platform.Players do
 
   def reset_for_new_round(%Player{} = player) do
     if player.confirmed do
-      new_white_cards = player.all_white_cards -- player.selected_white_cards ++ WhiteCards.random(length(player.selected_white_cards))
-      %{player | all_white_cards: new_white_cards, selected_white_cards: []}
+      random_cards = WhiteCards.random(length(player.selected_white_cards))
+      new_white_cards = random_cards ++ player.all_white_cards -- player.selected_white_cards
+      %{player | all_white_cards: new_white_cards, selected_white_cards: [], confirmed: false}
     else
       %{player | selected_white_cards: []}
     end
   end
 
+  def confirm_white_cards(%Player{} = player, max_picks) do
+    if length(player.selected_white_cards) == max_picks do
+      %{player | confirmed: true}
+    else
+      player
+    end
+  end
 
   def reset_selected_white_cards(%Player{} = player) do
     if player.confirmed do

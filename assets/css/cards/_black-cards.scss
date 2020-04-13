@@ -2,7 +2,7 @@
   position: relative;
 
   &__container {
-    max-width: 320px;
+    max-width: 420px;
     padding: $s-unit;
     display: block;
     margin: 0 auto;
@@ -19,5 +19,9 @@
     border: 1px solid $white;
     border-radius: 5px;
     background-color: $black;
+
+    &--confirmed {
+      border-color: green;
+    }
   }
 }
